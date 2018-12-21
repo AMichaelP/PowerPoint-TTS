@@ -1,6 +1,7 @@
 from pathlib import Path, PurePath
 
 from gtts import gTTS
+from ppt_tts.exceptions import PptFileDoesNotExist, VoExportDirDoesNotExist
 
 from ppt_tts.PptNotesParser import PptNotesParser
 
@@ -10,8 +11,11 @@ class PptTts:
     Create text-to-speech voice-over files using the notes slides of a PowerPoint file.
     """
     def __init__(self, ppt_file: Path, vo_export_dir: Path):
-        assert ppt_file.is_file()
-        assert vo_export_dir.is_dir()
+        if not ppt_file.is_file():
+            raise PptFileDoesNotExist()
+
+        if not vo_export_dir.is_dir():
+            raise VoExportDirDoesNotExist()
 
         self.ppt_file = ppt_file
         self.vo_export_dir = vo_export_dir
