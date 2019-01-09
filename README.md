@@ -1,4 +1,4 @@
-# ppt_tts
+# PowerPoint TTS
 Create text-to-speech voice-over files using the slide notes of a PowerPoint file. Can be used from the terminal, 
 or by using the GUI.
 
